@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Створення персонажа – Darkspace Escape</title>
+    <link rel="stylesheet" href="../css/generator.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="fade-in">
+
+    <div class="page-container">
+
+        <h1 class="page-title neon">Створення персонажа</h1>
+
+        <div class="generator-layout">
+
+            <!-- Панель налаштувань -->
+            <div class="generator-panel">
+                <h2>Налаштування</h2>
+
+                <label>Колір тіла:</label>
+                <select id="bodyColor">
+                    <option value="#8e44ad">Фіолетовий</option>
+                    <option value="#3498db">Синій</option>
+                    <option value="#2ecc71">Зелений</option>
+                </select>
+
+                <label>Колір голови:</label>
+                <select id="headColor">
+                    <option value="#a569bd">Світло-фіолетовий</option>
+                    <option value="#5dade2">Небесний</option>
+                    <option value="#58d68d">М'ятний</option>
+                </select>
+
+                <label>Тип очей:</label>
+                <select id="eyesType">
+                    <option value="1">Тип 1</option>
+                    <option value="2">Тип 2</option>
+                </select>
+
+                <button class="menu-btn" id="saveBtn">Зберегти персонажа</button>
+
+                <button class="menu-btn" onclick="location.href='index.html'">
+                    Назад у меню
+                </button>
+            </div>
+
+            <!-- Попередній перегляд -->
+            <div class="generator-preview">
+                <canvas id="characterCanvas" width="260" height="260"></canvas>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="../js/generator.js"></script>
+</body>
+</html>
