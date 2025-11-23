@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Налаштування — Darkspace Escape</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+  <header><h1 class="page-title neon">Налаштування</h1></header>
+  <main class="settings-container">
+    <div class="settings-section">
+      <h3 class="settings-title">🔊 Аудіо</h3>
+      <div class="setting-item">
+        <label class="setting-label">
+          <span>Гучність музики:</span>
+          <span id="musicVolValue" class="setting-value">60%</span>
+        </label>
+        <input id="musicVol" type="range" min="0" max="100" value="60" class="setting-slider">
+      </div>
+      <div class="setting-item">
+        <label class="setting-label">
+          <span>Гучність ефектів:</span>
+          <span id="sfxVolValue" class="setting-value">80%</span>
+        </label>
+        <input id="sfxVol" type="range" min="0" max="100" value="80" class="setting-slider">
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h3 class="settings-title">🎮 Ігрові налаштування</h3>
+      <div class="setting-item">
+        <label class="setting-label">
+          <span>Складність:</span>
+        </label>
+        <select id="difficulty" class="setting-select">
+          <option value="easy">Легка</option>
+          <option value="normal" selected>Нормальна</option>
+          <option value="hard">Складна</option>
+        </select>
+      </div>
+      <div class="setting-item">
+        <label class="setting-label">
+          <span>Швидкість руху персонажа:</span>
+          <span id="playerSpeedValue" class="setting-value">260</span>
+        </label>
+        <input id="playerSpeed" type="range" min="180" max="350" value="260" step="10" class="setting-slider">
+      </div>
+      <div class="setting-item">
+        <label class="setting-label">
+          <span>Частота появи астероїдів:</span>
+          <span id="asteroidFreqValue" class="setting-value">700мс</span>
+        </label>
+        <input id="asteroidFreq" type="range" min="400" max="1200" value="700" step="50" class="setting-slider">
+      </div>
+    </div>
+
+    <div class="settings-section">
+      <h3 class="settings-title">⚙️ Інтерфейс</h3>
+      <div class="setting-item">
+        <label class="setting-checkbox">
+          <input id="showFps" type="checkbox">
+          <span>Показувати FPS (для тестування)</span>
+        </label>
+      </div>
+      <div class="setting-item">
+        <label class="setting-checkbox">
+          <input id="fullscreen" type="checkbox">
+          <span>Повноекранний режим (при запуску гри)</span>
+        </label>
+      </div>
+    </div>
+
+    <div class="settings-actions">
+      <button id="saveSettings" class="select-btn">💾 Зберегти налаштування</button>
+      <button onclick="location.href='index.html'" class="select-btn" style="background:#444;margin-left:8px">← Назад</button>
+    </div>
+  </main>
+
+<script>
+// Оновлення значень при зміні слайдерів
+document.getElementById('musicVol').addEventListener('input', (e) => {
+  document.getElementById('musicVolValue').textContent = e.target.value + '%';
+});
+document.getElementById('sfxVol').addEventListener('input', (e) => {
+  document.getElementById('sfxVolValue').textContent = e.target.value + '%';
+});
+document.getElementById('playerSpeed').addEventListener('input', (e) => {
+  document.getElementById('playerSpeedValue').textContent = e.target.value;
+});
+document.getElementById('asteroidFreq').addEventListener('input', (e) => {
+  document.getElementById('asteroidFreqValue').textContent = e.target.value + 'мс';
+});
+
+document.getElementById('saveSettings').addEventListener('click', () => {
+  const settings = {
+    musicVol: +document.getElementById('musicVol').value,
+    sfxVol: +document.getElementById('sfxVol').value,
+    difficulty: document.getElementById('difficulty').value,
+    playerSpeed: +document.getElementById('playerSpeed').value,
+    asteroidFreq: +document.getElementById('asteroidFreq').value,
+    showFps: document.getElementById('showFps').checked,
+    fullscreen: document.getElementById('fullscreen').checked
+  };
+  localStorage.setItem('DSE_settings', JSON.stringify(settings));
+  
+  // Змінити кнопку на зелений колір з текстом "Зміни збережено"
+  const saveBtn = document.getElementById('saveSettings');
+  const originalText = saveBtn.textContent;
+  saveBtn.textContent = '✓ Зміни збережено';
+  saveBtn.style.background = 'linear-gradient(90deg, #2d7a2d, #4caf50)';
+  saveBtn.style.cursor = 'default';
+  
+  // Повернути оригінальний вигляд через 3 секунди
+  setTimeout(() => {
+    saveBtn.textContent = originalText;
+    saveBtn.style.background = '';
+    saveBtn.style.cursor = 'pointer';
+  }, 3000);
+});
+
+// Завантаження збережених налаштувань
+(function load() {
+  const s = localStorage.getItem('DSE_settings');
+  if (!s) return;
+  const cfg = JSON.parse(s);
+  document.getElementById('musicVol').value = cfg.musicVol ?? 60;
+  document.getElementById('musicVolValue').textContent = (cfg.musicVol ?? 60) + '%';
+  document.getElementById('sfxVol').value = cfg.sfxVol ?? 80;
+  document.getElementById('sfxVolValue').textContent = (cfg.sfxVol ?? 80) + '%';
+  document.getElementById('difficulty').value = cfg.difficulty ?? 'normal';
+  document.getElementById('playerSpeed').value = cfg.playerSpeed ?? 260;
+  document.getElementById('playerSpeedValue').textContent = cfg.playerSpeed ?? 260;
+  document.getElementById('asteroidFreq').value = cfg.asteroidFreq ?? 700;
+  document.getElementById('asteroidFreqValue').textContent = (cfg.asteroidFreq ?? 700) + 'мс';
+  document.getElementById('showFps').checked = cfg.showFps ?? false;
+  document.getElementById('fullscreen').checked = cfg.fullscreen ?? false;
+})();
+</script>
+</body>
+</html>

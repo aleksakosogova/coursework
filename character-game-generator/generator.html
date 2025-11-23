@@ -1,61 +1,43 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Створення персонажа – Darkspace Escape</title>
-    <link rel="stylesheet" href="../css/generator.css">
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Вибір персонажа — Darkspace Escape</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/game.css">
 </head>
+<body>
+  <div class="page">
+    <h1 class="page-title neon">Вибір героя</h1>
 
-<body class="fade-in">
+    <div class="selector-wrap">
+      <button id="prev" class="nav-btn">&#10094;</button>
 
-    <div class="page-container">
+      <div class="char-card">
+        <img id="charImg" class="char-img" src="../characters/character_1.png" alt="персонаж">
+      </div>
 
-        <h1 class="page-title neon">Створення персонажа</h1>
+      <button id="next" class="nav-btn">&#10095;</button>
 
-        <div class="generator-layout">
+      <div class="char-info">
+        <h2 id="charName">...</h2>
+        <p id="charLore">...</p>
 
-            <!-- Панель налаштувань -->
-            <div class="generator-panel">
-                <h2>Налаштування</h2>
-
-                <label>Колір тіла:</label>
-                <select id="bodyColor">
-                    <option value="#8e44ad">Фіолетовий</option>
-                    <option value="#3498db">Синій</option>
-                    <option value="#2ecc71">Зелений</option>
-                </select>
-
-                <label>Колір голови:</label>
-                <select id="headColor">
-                    <option value="#a569bd">Світло-фіолетовий</option>
-                    <option value="#5dade2">Небесний</option>
-                    <option value="#58d68d">М'ятний</option>
-                </select>
-
-                <label>Тип очей:</label>
-                <select id="eyesType">
-                    <option value="1">Тип 1</option>
-                    <option value="2">Тип 2</option>
-                </select>
-
-                <button class="menu-btn" id="saveBtn">Зберегти персонажа</button>
-
-                <button class="menu-btn" onclick="location.href='index.html'">
-                    Назад у меню
-                </button>
-            </div>
-
-            <!-- Попередній перегляд -->
-            <div class="generator-preview">
-                <canvas id="characterCanvas" width="260" height="260"></canvas>
-            </div>
-
+        <div class="stats">
+          <span>HP: <strong id="charHp">—</strong></span>
+          <span>ATK: <strong id="charAtk">—</strong></span>
+          <span>SPD: <strong id="charSpd">—</strong></span>
         </div>
 
+        <button id="select" class="select-btn">Обрати персонажа</button>
+      </div>
     </div>
 
-    <script src="../js/generator.js"></script>
+    <p class="note">Після вибору персонажа — натисни «Почати гру» в головному меню або відкрий гру.</p>
+
+  </div>
+
+  <script src="js/character-select.js"></script>
 </body>
 </html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Вибір героя — Darkspace Escape</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/game.css">
+</head>
+<body>
+  <header class="page-header">
+    <h1 class="page-title neon">Вибір героя</h1>
+  </header>
+
+  <section class="selector-wrap">
+    <button id="prevBtn" class="nav-btn" aria-label="Попередній">&#10094;</button>
+
+    <div class="char-panel">
+      <div class="char-frame">
+        <img id="charImg" class="char-img" src="../characters/character_1.png" alt="Персонаж">
+      </div>
+    </div>
+
+    <div class="char-info">
+      <h2 id="charName">Ім'я Прізвище</h2>
+      <h4 id="charTitle" style="color:#bda1ff;margin-top:6px">Короткий титул</h4>
+      <p id="charLore">Лор героя — короткий опис походження, мотивації, ще декілька речень про історію персонажа.</p>
+
+      <div class="stats">
+        <div class="stat">HP: <span id="hp">—</span></div>
+        <div class="stat">ATK: <span id="atk">—</span></div>
+        <div class="stat">SPD: <span id="spd">—</span></div>
+      </div>
+
+      <div style="margin-top:14px;">
+        <button id="chooseBtn" class="select-btn">Обрати персонажа</button>
+        <button id="startGameBtn" class="select-btn" style="margin-left:10px;background:linear-gradient(90deg,#5a189a,#8a4bff)">Почати гру</button>
+      </div>
+    </div>
+
+    <button id="nextBtn" class="nav-btn" aria-label="Наступний">&#10095;</button>
+  </section>
+
+  <div style="text-align:center;margin-top:20px;padding:20px">
+    <button onclick="location.href='index.html'" class="select-btn" style="background:#444">← Назад до меню</button>
+  </div>
+
+<script src="../js/character-select.js"></script>
+</body>
+</html>

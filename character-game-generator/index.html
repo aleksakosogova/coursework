@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Darkspace Escape</title>
-    <link rel="stylesheet" href="../css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Darkspace Escape — Меню</title>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
+<body>
+  <!-- Splash (з'являється першим, через 1.8s плавно ховається, логотип залишається) -->
+  <div id="splash" class="splash">
+    <h1 class="logo neon">Darkspace Escape</h1>
+  </div>
 
-<body class="fade-in">
-
-    <!-- ЗАСТАВКА -->
-    <div id="splash-screen">
-        <h1 class="logo neon">Darkspace Escape</h1>
+  <!-- Головне меню (після заставки) -->
+  <main id="mainMenu" class="menu hidden">
+    <h1 class="logo neon" style="margin-bottom: 20px;">Darkspace Escape</h1>
+    <h2 class="menu-title">Головне меню</h2>
+    <div class="menu-buttons">
+      <a class="btn" href="select.html">🎨 Обрати героя</a>
+      <a class="btn" href="settings.html">⚙ Налаштування</a>
+      <a class="btn" href="game.html">📂 Гра</a>
     </div>
+  </main>
 
-    <!-- ГОЛОВНЕ МЕНЮ -->
-    <div id="main-menu" class="hidden">
-        <h2 class="menu-title">Головне меню</h2>
-
-        <button class="menu-btn" onclick="location.href='generator.html'">
-            Створити персонажа
-        </button>
-
-        <button class="menu-btn" onclick="location.href='game.html'">
-            Почати гру
-        </button>
-
-        <button class="menu-btn">
-            Налаштування
-        </button>
-
-        <button class="menu-btn">
-            Збережені персонажі
-        </button>
-    </div>
-
-    <script src="../js/mainMenu.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // сплеш -> залишити логотип + меню (лого залишається)
+  setTimeout(() => {
+    const splash = document.getElementById('splash');
+    const main = document.getElementById('mainMenu');
+    // Плавно приховати сплеш, але лого залишиться в меню
+    splash.classList.add('fade-out');
+    setTimeout(() => {
+      splash.style.display = 'none';
+      main.classList.remove('hidden');
+      main.classList.add('fade-in');
+    }, 600);
+  }, 1800);
+});
+</script>
 </body>
 </html>
