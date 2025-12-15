@@ -32,7 +32,7 @@ Canvas API: Використовується рушієм для відмаль�
 LocalStorage: Збереження стану між сторінками.
 Структура проєкту
 
-coursework/ ├── character-game-generator/ │ ├── game.html │ ├── generator.html │ ├── index.html │ ├── select.html │ └── settings.html ├── characters/ │ └── (файли зображень персонажів) ├── css/ │ ├── game.css │ └── style.css ├── js/ │ ├── character-select.js │ ├── game-init.js │ └── phaser-scene.js └── README.md
+coursework/ ├── character-game-generator/ │ ├── game.html │ ├── index.html │ ├── select.html │ ├── characters/ │ └── (файли зображень персонажів) ├── css/ │ ├── game.css │ └── style.css ├── js/ │ ├── character-select.js │ ├── game-init.js │ └── phaser-scene.js └── README.md
 
 Інструкція з розгортання та запуску
 
