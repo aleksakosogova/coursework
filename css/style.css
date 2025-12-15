@@ -1,42 +1,81 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Rajdhani:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 :root{
   --bg1:#0a0212; --neon1:#8a4bff; --neon2:#c77dff;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Orbitron',Arial,sans-serif;background:radial-gradient(circle at 30% 30%, #130024 0%, var(--bg1) 60%);color:#efe8ff;min-height:100vh}
+body{font-family:'Orbitron',Arial,sans-serif;background:radial-gradient(circle at 30% 30%, #130024 0%, var(--bg1) 60%);color:#efe8ff;min-height:100vh;padding-bottom:120px}
 
 /* Splash */
-.splash{display:flex;align-items:center;justify-content:center;height:34vh}
-.logo{font-size:52px;color:var(--neon2);text-shadow:0 0 18px rgba(167,92,255,0.6)}
-.fade-out{animation:fadeOut 0.6s ease forwards}
-@keyframes fadeOut{to{opacity:0;transform:translateY(-8px)}}
+.splash{display:flex;align-items:center;justify-content:center;height:100vh;position:fixed;top:0;left:0;right:0;z-index:1000;background:radial-gradient(circle at center,#0a0212 0%,#050012 100%)}
+.splash-logo-fullscreen{font-size:120px;color:var(--neon2);text-shadow:0 0 30px rgba(167,92,255,0.9),0 0 60px rgba(138,75,255,0.5),0 0 90px rgba(199,125,255,0.3);font-weight:900;letter-spacing:6px;font-family:'Press Start 2P',monospace;position:absolute}
+/* Плавна, коротка анімація інтро: логотип просто м'яко зникає без зміни розміру */
+.logo-shrink-move{animation:logoShrinkMove 0.7s ease-in-out forwards}
+@keyframes logoShrinkMove{
+  0%{opacity:1;transform:translateY(0)}
+  100%{opacity:0;transform:translateY(0)}
+}
+.menu-logo{font-size:65px;color:var(--neon2);text-shadow:0 0 25px rgba(167,92,255,0.8),0 0 50px rgba(138,75,255,0.4),0 0 75px rgba(199,125,255,0.2);font-weight:900;letter-spacing:3px;font-family:'Press Start 2P',monospace}
+.logo-fade-in{animation:logoFadeIn 0.7s cubic-bezier(0.25,0.46,0.45,0.94) forwards}
+@keyframes logoFadeIn{from{opacity:0;transform:translateY(-10px) scale(0.98)}to{opacity:1;transform:translateY(0) scale(1)}}
+.logo{font-size:65px;color:var(--neon2);text-shadow:0 0 25px rgba(167,92,255,0.8),0 0 50px rgba(138,75,255,0.4),0 0 75px rgba(199,125,255,0.2);font-weight:900;letter-spacing:3px;font-family:'Press Start 2P',monospace}
 
 /* Menu */
-.menu{display:flex;flex-direction:column;align-items:center;gap:18px;padding:40px}
+body{position:relative;overflow-x:hidden}
+.space-decor{position:fixed;top:0;bottom:0;width:30%;z-index:0;pointer-events:none;opacity:0.7}
+.left-space{left:0;background:radial-gradient(ellipse at left center,rgba(138,75,255,0.4) 0%,rgba(199,125,255,0.25) 25%,rgba(138,75,255,0.15) 50%,transparent 80%);animation:spacePulse 6s ease-in-out infinite;box-shadow:inset -100px 0 200px rgba(138,75,255,0.2)}
+.right-space{right:0;background:radial-gradient(ellipse at right center,rgba(199,125,255,0.4) 0%,rgba(138,75,255,0.25) 25%,rgba(199,125,255,0.15) 50%,transparent 80%);animation:spacePulse 6s ease-in-out infinite 3s;box-shadow:inset 100px 0 200px rgba(199,125,255,0.2)}
+@keyframes spacePulse{0%,100%{opacity:0.5;transform:scale(1)}50%{opacity:0.8;transform:scale(1.05)}}
+.space-decor::before{content:'';position:absolute;width:100%;height:100%;background-image:radial-gradient(3px 3px at 15% 25%,#fff,transparent),radial-gradient(2px 2px at 45% 60%,#c77dff,transparent),radial-gradient(2px 2px at 70% 35%,#8a4bff,transparent),radial-gradient(1px 1px at 30% 80%,#fff,transparent),radial-gradient(2px 2px at 85% 15%,#c77dff,transparent),radial-gradient(1px 1px at 55% 45%,#8a4bff,transparent),radial-gradient(2px 2px at 20% 70%,#fff,transparent),radial-gradient(1px 1px at 90% 60%,#c77dff,transparent),radial-gradient(2px 2px at 40% 20%,#8a4bff,transparent),radial-gradient(1px 1px at 25% 50%,#fff,transparent),radial-gradient(2px 2px at 60% 25%,#c77dff,transparent),radial-gradient(1px 1px at 75% 75%,#8a4bff,transparent),radial-gradient(2px 2px at 35% 90%,#fff,transparent),radial-gradient(1px 1px at 80% 40%,#c77dff,transparent);background-size:200% 200%;background-position:0 0,100% 0,0 100%,100% 100%,50% 50%,25% 75%,75% 25%,10% 90%,90% 10%,30% 30%,70% 70%,20% 80%,80% 20%,40% 60%;animation:starMove 25s linear infinite;opacity:0.9}
+@keyframes starMove{0%{background-position:0 0,100% 0,0 100%,100% 100%,50% 50%,25% 75%,75% 25%,10% 90%,90% 10%}100%{background-position:100% 100%,0 100%,100% 0,0 0,50% 50%,75% 25%,25% 75%,90% 10%,10% 90%}}
+.space-decor::after{content:'';position:absolute;width:150px;height:150px;top:20%;left:10%;background:radial-gradient(circle,rgba(199,125,255,0.3) 0%,transparent 70%);border-radius:50%;animation:nebulaFloat 15s ease-in-out infinite;filter:blur(40px)}
+@keyframes nebulaFloat{0%,100%{transform:translate(0,0) scale(1);opacity:0.3}33%{transform:translate(30px,-20px) scale(1.2);opacity:0.5}66%{transform:translate(-20px,30px) scale(0.9);opacity:0.4}}
+.right-space::after{left:auto;right:10%}
+.menu{display:flex;flex-direction:column;align-items:center;gap:35px;padding:80px 40px 60px 40px;position:relative;z-index:1}
 .hidden{display:none}
 .fade-in{animation:fadeIn 0.6s ease forwards}
 @keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-.menu-buttons{display:flex;gap:14px;flex-wrap:wrap}
-.btn{background:linear-gradient(90deg,var(--neon1),#6a1bff);color:white;padding:12px 20px;border-radius:12px;text-decoration:none;box-shadow:0 8px 24px rgba(106,27,255,0.18)}
-.btn:hover{transform:translateY(-3px)}
+.menu-title{font-size:28px;color:var(--neon2);text-shadow:0 0 20px rgba(167,92,255,0.8),0 0 40px rgba(138,75,255,0.4);font-weight:700;letter-spacing:2px;font-family:'Press Start 2P',monospace}
+.menu-buttons{display:flex;flex-direction:column;gap:20px;justify-content:center;align-items:center;margin-top:20px}
+.menu-description{margin-top:40px;text-align:center;padding:20px;background:rgba(138,75,255,0.05);border-radius:12px;border:1px solid rgba(138,75,255,0.2);max-width:600px}
+.menu-text{font-size:14px;color:#d0c4ff;font-family:'Press Start 2P',monospace;margin:0 0 12px 0;text-shadow:0 0 10px rgba(138,75,255,0.5)}
+.menu-text-small{font-size:10px;color:#bda1ff;font-family:'Press Start 2P',monospace;margin:8px 0;opacity:0.8;line-height:1.6}
+.btn-wrapper{display:flex;align-items:center;gap:8px;position:relative}
+.btn-cosmic-decor{width:40px;height:40px;position:relative;opacity:0.6}
+.btn-cosmic-decor::before{content:'';position:absolute;width:100%;height:100%;background:radial-gradient(circle at center,rgba(138,75,255,0.8) 0%,rgba(199,125,255,0.4) 40%,transparent 70%);border-radius:50%;animation:cosmicPulse 3s ease-in-out infinite}
+.btn-cosmic-decor::after{content:'';position:absolute;width:60%;height:60%;top:20%;left:20%;background:radial-gradient(circle at center,#fff 0%,rgba(199,125,255,0.6) 50%,transparent 100%);border-radius:50%;animation:cosmicTwinkle 2s ease-in-out infinite}
+@keyframes cosmicPulse{0%,100%{transform:scale(1);opacity:0.6}50%{transform:scale(1.2);opacity:0.9}}
+@keyframes cosmicTwinkle{0%,100%{opacity:0.4}50%{opacity:1}}
+.left-decor{animation-delay:0s}
+.right-decor{animation-delay:1.5s}
+.btn{background:linear-gradient(90deg,var(--neon1),#6a1bff);color:white;padding:16px 32px;border-radius:12px;text-decoration:none;box-shadow:0 8px 24px rgba(106,27,255,0.18);font-size:12px;font-weight:700;transition:all 0.3s ease;position:relative;z-index:1;font-family:'Press Start 2P',monospace;letter-spacing:1px;text-transform:none}
+.btn:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(106,27,255,0.3);background:linear-gradient(90deg,#9a5bff,#7a2bff)}
+.game-actions{position:relative;margin:30px auto 40px auto;display:flex;flex-wrap:wrap;justify-content:center;gap:12px;width:min(90%,600px);padding:14px 20px;z-index:30}
+.game-actions .btn{flex:1 1 200px;min-width:140px;max-width:280px;text-align:center;padding:12px 20px;font-size:16px}
 
 /* Page titles */
-.page-title{ text-align:center;margin:18px 0;color:var(--neon2) }
+.page-title{text-align:center;margin:18px 0;color:var(--neon2);font-family:'Press Start 2P',monospace;font-size:20px;letter-spacing:2px}
 
 /* Selector layout */
 .selector-wrap{display:flex;align-items:center;gap:18px;justify-content:center;padding:20px;flex-wrap:wrap}
 .char-panel{width:260px}
-.char-frame{background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.6)}
-.char-img{width:220px;height:auto;image-rendering:pixelated;display:block;margin:0 auto;border-radius:6px}
-.char-info{max-width:420px;padding:12px;min-height:300px}
-.char-info h2{font-size:24px;margin-bottom:4px;color:#efe8ff}
-.char-info h4{font-size:16px;margin-bottom:12px}
-.char-info p{font-size:14px;line-height:1.6;color:#d0c4ff;margin-bottom:12px;min-height:60px}
+.char-frame{background:rgba(255,255,255,0.02);padding:16px;border-radius:12px;box-shadow:0 8px 30px rgba(0,0,0,0.6);position:relative}
+.char-img{width:220px;height:220px;object-fit:cover;object-position:center;image-rendering:pixelated;display:block;margin:0 auto;border-radius:6px;border:2px solid rgba(138,75,255,0.3)}
+.char-number{position:absolute;bottom:8px;right:8px;background:rgba(138,75,255,0.3);padding:4px 8px;border-radius:6px;font-size:10px;color:#fff;font-family:'Press Start 2P',monospace}
+.char-info{max-width:450px;padding:20px;min-height:350px;background:rgba(255,255,255,0.02);border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.3)}
+.char-info h2{font-size:20px;margin-bottom:8px;color:#efe8ff;font-family:'Press Start 2P',monospace}
+.char-info h4{font-size:14px;margin-bottom:16px;font-family:'Press Start 2P',monospace}
+.char-info p{font-size:16px;line-height:1.8;color:#d0c4ff;margin-bottom:20px;min-height:80px;padding:12px;background:rgba(138,75,255,0.05);border-radius:8px;border-left:3px solid var(--neon1)}
+.char-quote{margin:16px 0;padding:12px;background:rgba(199,125,255,0.08);border-radius:8px;border-left:3px solid var(--neon2);font-style:italic}
+.char-quote p{font-size:11px;color:#d0c4ff;margin:0;font-family:'Press Start 2P',monospace;line-height:1.6}
+.char-actions{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.char-actions .select-btn{width:100%;text-align:center;padding:14px 20px;font-family:'Press Start 2P',monospace;font-size:12px}
+.start-game-btn{background:linear-gradient(90deg,#5a189a,#8a4bff)!important;margin-left:0!important}
+.select-warning{margin-top:6px;font-size:10px;font-family:'Press Start 2P',monospace;color:#ff8ba7;text-align:left;background:rgba(255,139,167,0.08);border-left:2px solid #ff8ba7;padding:6px 10px;border-radius:6px;opacity:0;transform:translateY(4px);transition:opacity 0.25s ease,transform 0.25s ease}
+.select-warning.visible{opacity:1;transform:translateY(0)}
 .nav-btn{background:none;border:0;color:var(--neon2);font-size:46px;cursor:pointer;transition:transform .18s}
 .nav-btn:hover{transform:scale(1.06)}
-.stats{display:flex;gap:10px;margin-top:12px}
-.stat{background:rgba(255,255,255,0.03);padding:6px 12px;border-radius:8px;font-weight:700}
 .select-btn{display:inline-block;margin-top:12px;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,#7b3cff,#5a189a);border:0;color:white;cursor:pointer;box-shadow:0 8px 20px rgba(106,27,255,0.2)}
 .select-btn:hover{transform:translateY(-3px)}
 

@@ -63,8 +63,8 @@ window.addEventListener('load', () => {
     
     const config = {
       type: Phaser.AUTO,
-      width: 800,
-      height: 600,
+      width: 700,
+      height: 500,
       parent: 'gameArea',
       backgroundColor: '#050012',
       physics: { 

@@ -7,36 +7,61 @@
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <!-- Splash (з'являється першим, через 1.8s плавно ховається, логотип залишається) -->
+  <!-- Splash (коротке плавне інтро, без різких рухів) -->
   <div id="splash" class="splash">
-    <h1 class="logo neon">Darkspace Escape</h1>
+    <h1 id="splashLogo" class="logo neon splash-logo-fullscreen">Darkspace Escape</h1>
   </div>
 
+  <!-- Космічний дизайн по боках -->
+  <div class="space-decor left-space"></div>
+  <div class="space-decor right-space"></div>
+  
   <!-- Головне меню (після заставки) -->
   <main id="mainMenu" class="menu hidden">
-    <h1 class="logo neon" style="margin-bottom: 20px;">Darkspace Escape</h1>
+    <h1 id="menuLogo" class="logo neon menu-logo" style="margin-bottom: 30px; opacity: 0;">Darkspace Escape</h1>
     <h2 class="menu-title">Головне меню</h2>
     <div class="menu-buttons">
-      <a class="btn" href="select.html">🎨 Обрати героя</a>
-      <a class="btn" href="settings.html">⚙ Налаштування</a>
-      <a class="btn" href="game.html">📂 Гра</a>
+      <div class="btn-wrapper">
+        <div class="btn-cosmic-decor left-decor"></div>
+        <a class="btn" href="select.html">Обрати героя</a>
+        <div class="btn-cosmic-decor right-decor"></div>
+      </div>
+      <div class="btn-wrapper">
+        <div class="btn-cosmic-decor left-decor"></div>
+        <a class="btn btn-secondary" href="game.html">Гра</a>
+        <div class="btn-cosmic-decor right-decor"></div>
+      </div>
+    </div>
+    <div class="menu-description">
+      <p class="menu-text">«У безкрайньому космосі навіть найменше світло може стати єдиним орієнтиром»</p>
+      <p class="menu-text-small">Обирай свій шлях серед астероїдів, зірок і темряви.</p>
+      <p class="menu-text-small">Твоя швидкість — вибір, твоя надія — незламна.</p>
     </div>
   </main>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  // сплеш -> залишити логотип + меню (лого залишається)
+  const splash = document.getElementById('splash');
+  const splashLogo = document.getElementById('splashLogo');
+  const menuLogo = document.getElementById('menuLogo');
+  const main = document.getElementById('mainMenu');
+  
+  // Коротке, плавне інтро без різких рухів
   setTimeout(() => {
-    const splash = document.getElementById('splash');
-    const main = document.getElementById('mainMenu');
-    // Плавно приховати сплеш, але лого залишиться в меню
-    splash.classList.add('fade-out');
+    // Починаємо м'яку анімацію логотипу (просто зникає без зміни розміру)
+    splashLogo.classList.add('logo-shrink-move');
+    
     setTimeout(() => {
+      // Плавно приховуємо splash і показуємо меню
       splash.style.display = 'none';
       main.classList.remove('hidden');
       main.classList.add('fade-in');
-    }, 600);
-  }, 1800);
+      
+      // Плавна поява логотипу в меню
+      menuLogo.style.opacity = '1';
+      menuLogo.classList.add('logo-fade-in');
+    }, 450);
+  }, 900);
 });
 </script>
 </body>

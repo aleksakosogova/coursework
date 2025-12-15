@@ -18,6 +18,9 @@
     <div class="char-panel">
       <div class="char-frame">
         <img id="charImg" class="char-img" src="../characters/character_1.png" alt="Персонаж">
+        <div class="char-number">
+          <span id="charNumber">1</span> / <span id="totalChars">12</span>
+        </div>
       </div>
     </div>
 
@@ -25,16 +28,14 @@
       <h2 id="charName">Ім'я Прізвище</h2>
       <h4 id="charTitle" style="color:#bda1ff;margin-top:6px">Короткий титул</h4>
       <p id="charLore">Лор героя — короткий опис походження, мотивації, ще декілька речень про історію персонажа.</p>
-
-      <div class="stats">
-        <div class="stat">HP: <span id="hp">—</span></div>
-        <div class="stat">ATK: <span id="atk">—</span></div>
-        <div class="stat">SPD: <span id="spd">—</span></div>
+      
+      <div class="char-quote">
+        <p id="charQuote">"Цитата персонажа"</p>
       </div>
 
-      <div style="margin-top:14px;">
+      <div class="char-actions">
         <button id="chooseBtn" class="select-btn">Обрати персонажа</button>
-        <button id="startGameBtn" class="select-btn" style="margin-left:10px;background:linear-gradient(90deg,#5a189a,#8a4bff)">Почати гру</button>
+        <button id="startGameBtn" class="select-btn start-game-btn">Почати гру</button>
       </div>
     </div>
 
